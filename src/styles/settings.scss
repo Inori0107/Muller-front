@@ -1,0 +1,12 @@
+// main 入口 主要用來引入 需要的 partials
+
+// RWD
+@import "./mixins/rwd";
+
+// 變數
+@import "./variables";
+
+// 繼承樣式
+$first-color: #2c232e;
+$second-color: #ecd5bb;
+$third-color: #875f593b;
