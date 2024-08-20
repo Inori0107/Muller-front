@@ -110,7 +110,7 @@
       <span>MENU</span>
       <v-spacer></v-spacer>
       <v-img
-        src="../assets/LOGO/logo(small).gif"
+        src="../assets/LOGO/logo.gif"
         @click="$router.push('/')"
         style="cursor: pointer"
       />
@@ -145,7 +145,7 @@
     </v-btn>
   </div>
   <!-- Router content -->
-  <v-main>
+  <v-main style="padding: 0">
     <router-view :key="$route.fullPath" />
   </v-main>
   <!-- footer -->
@@ -295,9 +295,9 @@ watch(
     font-size: 1.5rem;
   }
 }
-
 .v-app-bar {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(6.5px);
   width: 100dvh !important;
   left: 100% !important;
   transform: rotate(90deg) !important;
@@ -330,7 +330,7 @@ watch(
 
 .fab-button {
   position: fixed;
-  bottom: 24px;
+  bottom: 64px;
   left: 24px;
 }
 
