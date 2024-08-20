@@ -17,7 +17,9 @@ jobs:
         # 使用的 actions/checkout 複製程式碼
         uses: actions/checkout@v4
         with:
-          sparse-checkout: .
+          sparse-checkout: |
+            .github
+            src
       # 步驟二：編譯
       - name: Install and Build
         run: |
