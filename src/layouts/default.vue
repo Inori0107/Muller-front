@@ -336,7 +336,7 @@ watch(
 
 .fab-actions {
   position: fixed;
-  bottom: 80px;
+  bottom: 120px;
   left: 24px;
   display: flex;
   flex-direction: column;
