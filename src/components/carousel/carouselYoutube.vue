@@ -50,12 +50,12 @@ const breakpoints = {
   0: {
     slidesPerView: 1,
     spaceBetween: 30,
-    videoWidth: "100%", // 在小螢幕上 iframe 寬度佔滿
+    videoWidth: "80%", // 在小螢幕上 iframe 寬度佔滿
   },
   960: {
     slidesPerView: 3,
     spaceBetween: 40,
-    videoWidth: "500px", // 在大螢幕上設置固定寬度
+    videoWidth: "100%", // 在大螢幕上設置固定寬度
   },
 };
 

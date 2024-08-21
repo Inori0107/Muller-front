@@ -1,9 +1,9 @@
 <template>
   <v-main>
     <!-- Contact us -->
-    <v-sheet style="height: 100dvh; padding-top: 84px">
+    <v-container>
       <v-img src="../assets/review/contact.jpg"></v-img>
-    </v-sheet>
+    </v-container>
     <!-- Review -->
     <v-sheet
       class="text-center"
@@ -34,28 +34,27 @@
           ></iframe>
         </v-col>
       </v-row>
-      <v-row
-        class="text-center pt-3 pb-5"
-        data-aos="fade-left"
-        data-aos-offset="300"
-      >
-        木樓合唱團官方YouTube頻道，承載了創立至今不同時期的豐富音樂風貌：在國際賽事上得獎的動人時刻、充滿土地情懷的委託創作作品及近年音樂會精選曲目，依照宗教、國際大賽、當代、委託創作、民謠等分門別類，歡迎您盡情地參觀木樓音樂「聲」林！
-        <v-divider class="mt-5" />
+      <v-row class="pb-5" data-aos="fade-left" data-aos-offset="300">
+        木樓合唱團官方YouTube頻道，<br />
+        承載了創立至今不同時期的豐富音樂風貌。<br />
+        在國際賽事上得獎的動人時刻、充滿土地情懷的委託創作作品及近年音樂會精選曲目，<br />
+        依照宗教、國際大賽、當代、委託創作、民謠等分門別類，歡迎您盡情地參觀木樓音樂「聲」林！
       </v-row>
       <v-row
         v-for="(video, index) in videos"
         :key="index"
-        class="d-flex align-center"
+        align="center"
         :data-aos="'fade-down'"
         :data-aos-delay="index * 100"
         :data-aos-offset="100"
+        style="border-top: 1px solid #333"
       >
         <template v-if="index % 2 === 0">
-          <v-col cols="6">
+          <v-col cols="6" class="pb-8">
             <p class="pt-3 pb-5">{{ video.title }}</p>
             <iframe
               width="100%"
-              height="200"
+              height="315"
               :src="video.src"
               title="YouTube video player"
               frameborder="0"
@@ -72,11 +71,11 @@
           <v-col cols="6">
             <p v-html="video.info" class="text-center"></p>
           </v-col>
-          <v-col cols="6">
+          <v-col cols="6" class="pb-8">
             <p class="pt-3 pb-5 text-right">{{ video.title }}</p>
             <iframe
               width="100%"
-              height="200"
+              height="315"
               :src="video.src"
               title="YouTube video player"
               frameborder="0"
@@ -86,7 +85,6 @@
             ></iframe>
           </v-col>
         </template>
-        <v-divider class="mt-5 mb-5" />
       </v-row>
     </v-container>
   </v-main>

@@ -1,16 +1,16 @@
 <template>
   <v-container>
     <v-col cols="12">
-      <qrcode-stream @decode="onDecode" @init="onInit"></qrcode-stream>
+      <qrcode-stream @decode="onDecode" @init="onInit" />
     </v-col>
   </v-container>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import { QrcodeStream } from "vue-qrcode-reader";
 import { useApi } from "@/composables/axios";
 import { useSnackbar } from "vuetify-use-dialog";
-import { QrcodeStream } from "vue-qrcode-reader";
 
 const { apiAuth } = useApi();
 const createSnackbar = useSnackbar();
@@ -48,5 +48,5 @@ const onInit = (promise) => {
 
 <route lang="yaml">
 meta:
-  layout: default
+  layout: admin
 </route>

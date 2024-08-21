@@ -304,12 +304,11 @@ watch(
   transform-origin: top left !important;
   padding: 16px;
   font-size: 1.5rem;
-
   .scroll-indicator span {
     position: absolute;
     transform: translate(-50%, -50%);
     transition: 0.3s ease;
-    width: 200px;
+    width: 250px;
   }
   .fade-in {
     opacity: 1;
@@ -332,6 +331,7 @@ watch(
   position: fixed;
   bottom: 64px;
   left: 24px;
+  z-index: 100;
 }
 
 .fab-actions {
@@ -341,6 +341,7 @@ watch(
   display: flex;
   flex-direction: column;
   gap: 16px;
+  z-index: 100;
 }
 
 .v-footer {

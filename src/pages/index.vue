@@ -1,21 +1,38 @@
 <template>
+  <!-- heroPic -->
   <v-container fluid style="padding: 0">
-    <v-img src="../assets/home/heroPic.png" style="position: relative">
-      <h1 class="title">MÜLLER CHAMBER CHOIR <br />木樓合唱團</h1>
+    <v-img
+      src="../assets/home/heroPic.png"
+      style="position: relative"
+      class="heroPic"
+    >
+      <div ref="textContainer" class="title">
+        <span v-for="(char, index) in textArray" :key="index">
+          {{ char }}
+        </span>
+        <br />
+        <span
+          v-for="(char, index) in textArraySecondary"
+          :key="'secondary-' + index"
+        >
+          {{ char }}
+        </span>
+      </div>
     </v-img>
     <div class="diagonal-section"></div>
   </v-container>
 
-  <v-container fluid style="padding: 0">
+  <!-- About us -->
+  <v-container fluid style="padding: 0" class="animate-block">
     <v-row>
       <v-col cols="10">
         <v-img src="../assets/home/bg.jpg"></v-img>
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-col cols="4"
-        ><v-img src="../assets/about/conductor.png" class="conductor_img"
-      /></v-col>
+      <v-col cols="4">
+        <v-img src="../assets/about/conductor.png" class="conductor_img" />
+      </v-col>
       <v-col cols="5" class="about">
         <h1>
           關於木樓<br />
@@ -29,7 +46,8 @@
     </v-row>
   </v-container>
 
-  <v-container fluid id="bg_1">
+  <!-- Youtube -->
+  <v-container fluid id="bg_1" class="animate-block">
     <CarouselYoutube />
     <h1>
       木樓合唱團YouTube頻道 歡迎訂閱
@@ -38,7 +56,8 @@
     <v-img src="../assets/home/bg_2.png"></v-img>
   </v-container>
 
-  <v-container fluid>
+  <!-- Performance -->
+  <v-container fluid class="animate-block">
     <h1 class="text-center my-8">近期演出</h1>
     <v-container class="my-8">
       <v-row class="my-4" v-for="session in sessions" :key="session._id">
@@ -53,7 +72,9 @@
       <p class="text-end me-8">...more</p>
     </v-container>
   </v-container>
-  <v-container fluid class="bg-black footer">
+
+  <!-- Footer -->
+  <v-container fluid class="bg-black footer animate-block">
     <v-row align="center" style="height: 60dvh">
       <v-col><h1>MÜLLER CHAMBER CHOIR</h1></v-col>
     </v-row>
@@ -65,6 +86,10 @@ import CarouselYoutube from "@/components/carousel/carouselYoutube.vue";
 import { ref, onMounted } from "vue";
 import { useApi } from "@/composables/axios";
 import { definePage } from "vue-router/auto";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 definePage({
   meta: {
@@ -72,6 +97,60 @@ definePage({
     login: false,
     admin: false,
   },
+});
+
+const textPrimary = "MÜLLER CHAMBER CHOIR";
+const textSecondary = "木樓合唱團";
+
+const textArray = ref(textPrimary.split(""));
+const textArraySecondary = ref(textSecondary.split(""));
+
+const textContainer = ref(null);
+
+onMounted(() => {
+  // 圖片動畫
+  gsap.fromTo(
+    ".heroPic",
+    { filter: "blur(10px)", scale: 1.1 },
+    {
+      filter: "blur(0px)",
+      scale: 1,
+      duration: 1.5,
+      ease: "power2.out",
+    }
+  );
+
+  // 文字動畫，延遲圖片動畫完成後開始
+  gsap.fromTo(
+    textContainer.value.children,
+    { opacity: 0, y: 20 },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.1,
+      duration: 0.5,
+      ease: "power2.out",
+      delay: 1.5, // 與圖片動畫對齊，圖片動畫結束後立即開始文字動畫
+    }
+  );
+  // 對所有主要區塊統一應用淡入和縮放的效果
+  gsap.utils.toArray(".animate-block").forEach((block) => {
+    gsap.fromTo(
+      block,
+      { opacity: 0, y: -100 }, // 向上浮動進入
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: block,
+          start: "top 60%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  });
 });
 
 // 使用 useApi composable 來進行 API 請求
@@ -118,12 +197,14 @@ onMounted(() => {
   width: 100%;
   text-align: center;
   font-size: 2rem;
+  font-weight: 600;
   color: white;
   line-height: 1.5;
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* 光芒效果 */
   @include md {
     font-size: 3rem;
   }
