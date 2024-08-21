@@ -1,26 +1,18 @@
 <template>
   <Swiper
     :modules="modules"
-    :slides-per-view="3"
-    :space-between="40"
-    :loop="true"
-    :autoplay="{
-      delay: 5000,
-      disableOnInteraction: false,
-    }"
+    navigation
+    :slides-per-view="slidesPerView"
+    :space-between="spaceBetween"
     :breakpoints="breakpoints"
-    class="pa-16"
+    :loop="true"
+    :centeredSlides="true"
+    class="pa-16 overflow-visible"
   >
     <SwiperSlide v-for="(video, index) in videos" :key="index">
-      <iframe
-        :src="video.src"
-        :width="videoWidth"
-        height="315"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
+      <div class="video-container">
+        <iframe :src="video.src" frameborder="0"></iframe>
+      </div>
     </SwiperSlide>
   </Swiper>
 </template>
@@ -28,8 +20,10 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/swiper-bundle.css";
-import { Autoplay } from "swiper/modules";
-const modules = [Autoplay];
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+
+const modules = [Navigation];
 
 const videos = [
   {
@@ -49,21 +43,35 @@ const videos = [
 const breakpoints = {
   0: {
     slidesPerView: 1,
-    spaceBetween: 30,
-    videoWidth: "80%", // 在小螢幕上 iframe 寬度佔滿
+    spaceBetween: 80,
   },
   960: {
     slidesPerView: 3,
-    spaceBetween: 40,
-    videoWidth: "100%", // 在大螢幕上設置固定寬度
+    spaceBetween: 50,
   },
 };
-
-const videoWidth = computed(() => {
-  if (window.innerWidth < 960) {
-    return breakpoints[0].videoWidth;
-  } else {
-    return breakpoints[960].videoWidth;
-  }
-});
 </script>
+
+<style scoped lang="scss">
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+:deep(.swiper-button-prev),
+:deep(.swiper-button-next) {
+  color: black;
+}
+</style>

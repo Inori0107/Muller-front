@@ -65,7 +65,9 @@
         <v-col>{{ session.name }}</v-col>
         <v-col>{{ session.location }}</v-col>
         <v-col class="text-end me-4">
-          <v-btn variant color="black" to="/shop/ticket">立即購票</v-btn>
+          <v-btn variant="plain" color="black" to="/shop/ticket"
+            >立即購票</v-btn
+          >
         </v-col>
         <v-divider />
       </v-row>

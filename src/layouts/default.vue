@@ -8,7 +8,7 @@
     class="custom-drawer"
   >
     <template v-if="!isMobile">
-      <v-btn variant icon @click="drawer = false" class="close-btn">
+      <v-btn variant="plain" icon @click="drawer = false" class="close-btn">
         <v-icon>mdi-close</v-icon>
       </v-btn>
       <v-row justify="center" align="center" class="mt-10 pt-10">
@@ -64,13 +64,13 @@
               <img src="../assets/LOGO/logo01.webp" />
             </v-col>
             <v-col>
-              <v-btn icon variant>
+              <v-btn icon variant="plain">
                 <v-icon size="x-large">mdi-facebook</v-icon>
               </v-btn>
-              <v-btn icon variant>
+              <v-btn icon variant="plain">
                 <v-icon size="x-large">mdi-instagram</v-icon>
               </v-btn>
-              <v-btn icon variant>
+              <v-btn icon variant="plain">
                 <v-icon size="x-large">mdi-youtube</v-icon>
               </v-btn>
             </v-col>
@@ -80,7 +80,7 @@
     </template>
     <!-- 在小於 md 尺寸時顯示 v-list-group -->
     <template v-else>
-      <v-btn variant icon @click="drawer = false" class="close-btn">
+      <v-btn variant="plain" icon @click="drawer = false" class="close-btn">
         <v-icon>mdi-close</v-icon>
       </v-btn>
       <v-list class="mt-10">
@@ -122,17 +122,19 @@
     </v-app-bar>
   </template>
   <template v-else>
-    <v-btn icon variant @click="drawer = !drawer" class="drawer-btn">
+    <v-btn icon variant="plain" @click="drawer = !drawer" class="drawer-btn">
       <v-icon>mdi-menu</v-icon>
     </v-btn>
   </template>
   <!-- fab -->
-  <v-btn icon @click="toggleFab" class="fab-button">
+  <div class="fab-button">
+    <MemberDialog ref="MemberDialogRef" />
+  </div>
+  <v-btn icon @click="toggleFab" class="fab-button" v-show="user.isLogin">
     <v-icon>{{ isFabOpen ? "mdi-close" : "mdi-plus" }}</v-icon>
   </v-btn>
   <!-- FAB 展開的按鈕 -->
   <div v-if="isFabOpen" class="fab-actions">
-    <MemberDialog ref="MemberDialogRef" />
     <v-btn
       v-for="(button, index) in buttons"
       :key="index"

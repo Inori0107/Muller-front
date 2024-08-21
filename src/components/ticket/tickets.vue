@@ -5,8 +5,8 @@
     transition="dialog-transition"
   >
     <template v-slot:default>
-      <div class="dialog-content">
-        <v-row class="my-4">
+      <v-card class="pa-8">
+        <v-row class="ma-4">
           <!-- SVG -->
           <v-col cols="12" md="9">
             <svg
@@ -4421,7 +4421,7 @@
             </v-card>
           </v-col>
         </v-row>
-      </div>
+      </v-card>
     </template>
   </v-dialog>
 </template>
@@ -4645,11 +4645,6 @@ watch(
 
 <style scoped lang="scss">
 @import "@/styles/settings.scss";
-.dialog-content {
-  background-color: white;
-  padding: 32px 64px;
-  border-radius: 10px;
-}
 
 .faded {
   opacity: 0.1;

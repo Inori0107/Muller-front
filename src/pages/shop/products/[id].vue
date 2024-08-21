@@ -72,8 +72,14 @@
   <!-- 商品預覽 -->
   <v-container class="mt-4 mb-8">
     <div class="category">更多商品</div>
-    <v-row class="mt-8" justify="center">
-      <v-col cols="3" v-for="item in filteredProducts" :key="item._id">
+    <v-row justify="center">
+      <v-col
+        cols="7"
+        md="3"
+        v-for="item in filteredProducts"
+        :key="item._id"
+        class="my-8"
+      >
         <v-card>
           <v-img :src="item.image"></v-img>
           <v-card-title class="card-title">
