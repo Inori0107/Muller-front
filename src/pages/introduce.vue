@@ -188,7 +188,16 @@
 </template>
 
 <script setup>
+import { definePage } from "vue-router/auto";
 import { useDisplay } from "vuetify";
+
+definePage({
+  meta: {
+    title: "木樓合唱團 | 關於我們",
+    login: false,
+    admin: false,
+  },
+});
 
 // 使用 useDisplay 來偵測螢幕尺寸
 const { mobile } = useDisplay();
