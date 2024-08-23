@@ -101,24 +101,18 @@
       </v-list>
     </template>
   </v-navigation-drawer>
+
   <!-- Main content -->
   <template v-if="!isMobile">
-    <v-app-bar flat>
+    <v-app-bar flat :class="{ 'app-bar-hidden': isAppBarHidden }">
       <v-btn icon @click="drawer = !drawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
       <span>MENU</span>
       <v-spacer></v-spacer>
-      <v-img
-        src="../assets/LOGO/logo.gif"
-        @click="$router.push('/')"
-        style="cursor: pointer"
-      />
-      <v-spacer></v-spacer>
-      <div class="scroll-indicator">
-        <span :class="fadeClass">{{ currentText }}</span>
+      <div class="logo_btn">
+        <img src="../assets/LOGO/logo.gif" @click="$router.push('/')" />
       </div>
-      <v-spacer></v-spacer>
     </v-app-bar>
   </template>
   <template v-else>
@@ -126,6 +120,7 @@
       <v-icon>mdi-menu</v-icon>
     </v-btn>
   </template>
+
   <!-- fab -->
   <div class="fab-button">
     <MemberDialog ref="MemberDialogRef" />
@@ -146,10 +141,12 @@
       <component :is="button.component" v-if="button.component"></component>
     </v-btn>
   </div>
+
   <!-- Router content -->
   <v-main style="padding: 0">
     <router-view :key="$route.fullPath" />
   </v-main>
+
   <!-- footer -->
   <v-footer>
     <v-icon>mdi-copyright</v-icon>
@@ -168,31 +165,28 @@ import { useDisplay } from "vuetify";
 
 // 控制抽屜開關的狀態
 const drawer = ref(false);
+const isAppBarHidden = ref(false);
+const lastScrollTop = ref(0);
 
-const isScroll = ref(false);
-const currentText = ref("SCROLL DOWN →");
-const fadeClass = ref("");
 // 處理滾動事件
 const handleScroll = () => {
   const scrollPosition = window.scrollY || document.documentElement.scrollTop;
   const windowHeight = window.innerHeight;
 
-  // 設置 isScroll 的值
-  isScroll.value = scrollPosition > windowHeight;
+  // 判斷滾動方向並隱藏或顯示 v-app-bar
+  if (scrollPosition > lastScrollTop.value && scrollPosition > windowHeight) {
+    isAppBarHidden.value = true;
+  } else {
+    isAppBarHidden.value = false;
+  }
+
+  lastScrollTop.value = scrollPosition <= 0 ? 0 : scrollPosition;
 };
-// 監聽 isScroll 的變化
-watch(isScroll, (newValue) => {
-  // 觸發淡出效果
-  fadeClass.value = "fade-out";
-  // 延遲變更文字，等淡出效果結束後觸發淡入效果
-  setTimeout(() => {
-    currentText.value = newValue ? "← PAGE TOP" : "SCROLL DOWN →";
-    fadeClass.value = "fade-in";
-  }, 500); // 與 CSS transition 的時間一致
-});
+
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
+
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
@@ -285,6 +279,7 @@ watch(
 
 <style scoped lang="scss">
 @import "../styles/settings.scss";
+
 .custom-drawer {
   transition: 0.5s;
   .close-btn {
@@ -297,26 +292,24 @@ watch(
     font-size: 1.5rem;
   }
 }
+
 .v-app-bar {
   background: rgba(255, 255, 255, 0.42);
   backdrop-filter: blur(6.5px);
-  width: 100dvh !important;
-  left: 100% !important;
-  transform: rotate(90deg) !important;
-  transform-origin: top left !important;
   padding: 16px;
   font-size: 1.5rem;
-  .scroll-indicator span {
+  transition: 0.3s; /* 添加平滑過渡效果 */
+
+  &.app-bar-hidden {
+    top: -100px !important; /* 隱藏 v-app-bar */
+  }
+
+  .logo_btn {
+    cursor: pointer;
     position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    transition: 0.3s ease;
-    width: 250px;
-  }
-  .fade-in {
-    opacity: 1;
-  }
-  .fade-out {
-    opacity: 0;
   }
 }
 

@@ -5,7 +5,7 @@
     :space-between="spaceBetween"
     :loop="true"
     :autoplay="{
-      delay: 2500,
+      delay: 10000,
       disableOnInteraction: false,
     }"
     :centeredSlides="true"

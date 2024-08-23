@@ -65,20 +65,69 @@
         <v-col>{{ session.name }}</v-col>
         <v-col>{{ session.location }}</v-col>
         <v-col class="text-end me-4">
-          <v-btn variant="plain" color="black" to="/shop/ticket"
-            >立即購票</v-btn
-          >
+          <v-btn variant="plain" color="black" to="/shop/ticket">
+            立即購票
+          </v-btn>
         </v-col>
         <v-divider />
       </v-row>
-      <p class="text-end me-8">...more</p>
+      <p class="text-end me-4">
+        <v-btn variant="plain" color="black" to="/shop/ticket"> more </v-btn>
+      </p>
     </v-container>
+  </v-container>
+
+  <!-- publication -->
+  <v-container fluid class="publication">
+    <v-row justify="center" style="transform: translateY(-25%)">
+      <v-col cols="5" md="4">
+        <v-row>
+          <v-col cols="6">樂譜</v-col>
+          <v-col cols="6" class="text-end">
+            <v-btn variant="plain" color="black" to="/shop/product">
+              more
+            </v-btn>
+          </v-col>
+          <v-col cols="12">
+            <v-img src="../assets/home/sheet.webp"></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col cols="5" md="4">
+        <v-row>
+          <v-col cols="6">樂譜</v-col>
+          <v-col cols="6" class="text-end">
+            <v-btn variant="plain" color="black" to="/shop/product">
+              more
+            </v-btn>
+          </v-col>
+          <v-col cols="12">
+            <v-img src="../assets/home/sheet.webp"></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
   </v-container>
 
   <!-- Footer -->
   <v-container fluid class="bg-black footer animate-block">
-    <v-row align="center" style="height: 60dvh">
-      <v-col><h1>MÜLLER CHAMBER CHOIR</h1></v-col>
+    <v-row dense>
+      <v-col cols="12">
+        <h1>MÜLLER CHAMBER CHOIR</h1>
+      </v-col>
+      <v-col cols="12">
+        <h4>木樓合唱團</h4>
+      </v-col>
+      <v-col offset="6">
+        <h5>
+          106001臺北市大安區杭州南路二段7-1號B1F <br />
+          B1F., No. 7-1, Sec. 2, Hangzhou S. Rd., Da’an Dist., Taipei City 106,
+          Taiwan <br />
+          TEL：+886-2-2365-8943 <br />
+          FAX：+886-2-2341-2340 <br />
+          Email : muller@muller.org.tw
+        </h5>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -256,13 +305,39 @@ onMounted(() => {
     }
   }
 }
+
+.publication {
+  padding-top: 128px;
+  background: linear-gradient(white 50%, black 100%);
+}
+
 .footer {
+  padding: 3rem 0;
+  @include md {
+    padding: 6rem 0;
+  }
   h1 {
-    padding: 20px;
-    font-size: 2rem;
+    padding: 0 32px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    @include md {
+      font-size: 2.5rem;
+    }
+  }
+  h4 {
+    padding: 0 32px;
+    font-size: 1rem;
+    letter-spacing: 1rem;
+    @include md {
+      font-size: 1.5rem;
+    }
+  }
+  h5 {
+    padding: 0 32px;
+    font-size: 0.6rem;
     font-weight: normal;
     @include md {
-      font-size: 3rem;
+      font-size: 1rem;
     }
   }
 }

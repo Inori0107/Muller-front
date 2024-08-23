@@ -4650,10 +4650,12 @@ watch(
   opacity: 0.1;
 }
 
+// 被選取
 .selected {
   filter: brightness(0.7);
 }
 
+// 被訂走
 .reserved {
   fill: #999; /* 你可以根據需要更改顏色 */
   pointer-events: none; /* 防止被選擇 */
