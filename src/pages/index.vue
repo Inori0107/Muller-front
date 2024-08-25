@@ -77,6 +77,12 @@
     </v-container>
   </v-container>
 
+  <!-- review -->
+  <h1 class="text-center">演出回顧</h1>
+  <CarouselImage />
+  <div class="mt-5 pt-5">
+    <DialogComponent title="關於我們"></DialogComponent>
+  </div>
   <!-- publication -->
   <v-container fluid class="publication">
     <v-row justify="center" style="transform: translateY(-25%)">
@@ -134,6 +140,7 @@
 
 <script setup>
 import CarouselYoutube from "@/components/carousel/carouselYoutube.vue";
+import CarouselImage from "@/components/carousel/carouselImage.vue";
 import { ref, onMounted } from "vue";
 import { useApi } from "@/composables/axios";
 import { definePage } from "vue-router/auto";

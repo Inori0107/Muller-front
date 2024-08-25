@@ -136,6 +136,7 @@ const updateActiveIndex = (swiper) => {
 </script>
 
 <style scoped lang="scss">
+@import "@/styles/settings.scss";
 .carousel-card,
 .carousel-image {
   transition: transform 0.3s ease-in-out;
@@ -152,14 +153,21 @@ const updateActiveIndex = (swiper) => {
 
 .carousel-card .v-card-title {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #333; /* 深灰色文字 */
+  @include md {
+    font-size: 1.5rem;
+  }
 }
 
 .carousel-card .v-card-text {
   color: #666; /* 淺灰色文字 */
   font-weight: 600;
   padding: 8px;
+  font-size: 0.6rem;
+  @include md {
+    font-size: 1rem;
+  }
 }
 .swiper-slide-active .carousel-card,
 .swiper-slide-active .carousel-image {

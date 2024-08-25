@@ -4645,7 +4645,6 @@ watch(
 
 <style scoped lang="scss">
 @import "@/styles/settings.scss";
-
 .faded {
   opacity: 0.1;
 }

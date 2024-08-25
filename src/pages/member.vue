@@ -2,7 +2,6 @@
   <v-main>
     <v-sheet class="heroPic">
       <v-container>
-        <h1 class="title">築夢木樓</h1>
         <v-row justify="center">
           <v-col cols="5" style="position: relative">
             <h2 class="text">票券清單</h2>

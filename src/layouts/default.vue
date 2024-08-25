@@ -216,7 +216,6 @@ const menuItems = ref([
   {
     name: "了解更多",
     items: [
-      { text: "INFORMATION", to: "/information" },
       { text: "PRODUCT", to: "/shop/product" },
       { text: "TICKET", to: "/shop/ticket", requiresAuth: true },
       { text: "MEMBER", to: "/member", requiresAuth: true },
