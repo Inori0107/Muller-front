@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="my-8">
       <v-col cols="12">
-        <h1 class="text-center">訂單管理</h1>
+        <h1 class="text-center">活動管理</h1>
       </v-col>
       <v-col cols="4" v-for="session in sessions" :key="session._id">
         <v-card @click="openTicketManagement(session._id)">

@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="my-8">
       <v-col cols="12">
-        <h1 class="text-center">場次管理</h1>
+        <h1 class="text-center">票務管理</h1>
       </v-col>
       <v-col cols="12">
         <v-btn color="green" @click="openDialog(null)">新增場次</v-btn>
