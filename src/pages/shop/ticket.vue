@@ -1,7 +1,7 @@
 <template>
   <v-container class="container">
     <span class="banner">TICKET</span>
-    <v-img src="../../assets/ticket/ticket_bg.webp" class="my-8"></v-img>
+    <v-img src="../../assets/ticket/ticket_bg.webp" class="ma-8"></v-img>
     <v-row class="my-8" justify="center">
       <v-col cols="8" md="4" v-for="session in sessions" :key="session._id">
         <v-card class="ticket-card" @click="openTicketManagement(session._id)">
@@ -86,6 +86,7 @@ loadSessions();
   background-color: #f5f5f5;
   color: #333;
   font-size: 1.5rem;
+  margin: 32px;
   @include lg {
     font-size: 2rem;
   }
@@ -93,6 +94,9 @@ loadSessions();
 .container {
   margin-bottom: 0px;
   padding: 64px 0;
+  @include lg {
+    padding: 128px 0;
+  }
 }
 .ticket-card {
   transition: 0.3s ease-in-out;

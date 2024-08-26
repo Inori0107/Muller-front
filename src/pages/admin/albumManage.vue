@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row>
+    <v-row class="my-8">
       <v-col cols="12">
         <h1 class="text-center">專輯管理</h1>
       </v-col>

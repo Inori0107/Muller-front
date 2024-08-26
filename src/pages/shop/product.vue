@@ -3,7 +3,7 @@
     <v-sheet>
       <v-container class="container">
         <span class="banner">PUBLICATION</span>
-        <v-img src="../../assets/album/heroPic.webp" class="my-8"></v-img>
+        <v-img src="../../assets/album/heroPic.webp" class="ma-8"></v-img>
       </v-container>
     </v-sheet>
     <!-- 專輯 -->
@@ -42,6 +42,7 @@ definePage({
   background-color: #f5f5f5;
   color: #333;
   font-size: 1.5rem;
+  margin: 32px;
   @include lg {
     font-size: 2rem;
   }
@@ -49,5 +50,8 @@ definePage({
 .container {
   margin-bottom: 0px;
   padding: 64px 0;
+  @include lg {
+    padding: 128px 0;
+  }
 }
 </style>

@@ -7,8 +7,8 @@
     </v-img>
     <v-row justify="center" class="content">
       <v-col md="6" class="text-center" v-if="!isMobile">
-        <h1>歷史...</h1>
-        <h1>人物...</h1>
+        <h1 @click="scrollToNav(navs.history)">歷史...</h1>
+        <h1 @click="scrollToNav(navs.people)">人物...</h1>
       </v-col>
       <v-col cols="5" md="6">
         <span>
@@ -22,7 +22,7 @@
   </v-container>
 
   <!-- history -->
-  <v-container fluid style="padding: 0">
+  <v-container fluid style="padding: 0" id="history">
     <!-- nav -->
     <div class="nav-bar">
       <div class="nav-item" style="background: #000"><p>歷史</p></div>
@@ -204,8 +204,9 @@ import { useDisplay } from "vuetify";
 import { ref, onMounted, watch } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 definePage({
   meta: {
@@ -231,24 +232,37 @@ const navItems = ref(["1999", "2010", "2020"]);
 const selectedIndex = ref(0);
 const sections = ref([]);
 
-// 滾動至對應區域
+const navs = {
+  history: "#history",
+  people: ".people",
+};
+
+const scrollToNav = (nav, index) => {
+  const target = document.querySelector(nav);
+  if (target) {
+    gsap.to(window, { scrollTo: target, duration: 1 });
+  }
+};
 const scrollToSection = (index) => {
   gsap.to(window, { scrollTo: sections.value[index], duration: 1 });
 };
+
 // 更新選中的導航項目
 const updateNav = (index) => {
-  selectedIndex.value = index;
+  if (selectedIndex.value !== index) {
+    selectedIndex.value = index;
+  }
 };
 onMounted(() => {
   sections.value = document.querySelectorAll(".year");
   sections.value.forEach((section, index) => {
     ScrollTrigger.create({
       trigger: section,
-      start: "bottom",
+      start: "top",
       end: "bottom",
-      markers: true,
-      onEnter: () => updateNav(index),
-      onEnterBack: () => updateNav(index),
+      invalidateOnRefresh: true,
+      onEnter: () => updateNav(index), // 滾動進入區域時觸發
+      onEnterBack: () => updateNav(index), // 滾動返回區域時觸發
     });
   });
 });
@@ -359,7 +373,7 @@ const history_2020_2021 = [
   background: #fff;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 .nav-item {
   height: 50px;

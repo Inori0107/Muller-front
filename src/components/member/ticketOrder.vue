@@ -60,7 +60,7 @@ const loadItems = async () => {
     const orders = data.result;
     for (const order of orders) {
       const qrCodeData = await QRCode.toDataURL(
-        JSON.stringify(order.cart_T.map((ticket) => ticket.t_id))
+        JSON.stringify(order.cart_T.map((ticket) => ticket.t_id._id))
       );
       order.qrCode = qrCodeData;
     }

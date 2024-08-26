@@ -63,7 +63,7 @@
       <v-row class="my-4" v-for="session in sessions" :key="session._id">
         <v-col class="ms-4">{{ formatDate(session.date) }}</v-col>
         <v-col>{{ session.name }}</v-col>
-        <v-col>{{ session.location }}</v-col>
+        <v-col>{{ session.description }}</v-col>
         <v-col class="text-end me-4">
           <v-btn variant="plain" color="black" to="/shop/ticket">
             立即購票
@@ -101,14 +101,14 @@
       </v-col>
       <v-col cols="5" md="4">
         <v-row>
-          <v-col cols="6">樂譜</v-col>
+          <v-col cols="6">專輯</v-col>
           <v-col cols="6" class="text-end">
             <v-btn variant="plain" color="black" to="/shop/product">
               more
             </v-btn>
           </v-col>
           <v-col cols="12">
-            <v-img src="../assets/home/sheet.webp"></v-img>
+            <v-img src="../assets/home/love02.png"></v-img>
           </v-col>
         </v-row>
       </v-col>

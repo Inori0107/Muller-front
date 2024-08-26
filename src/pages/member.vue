@@ -6,12 +6,16 @@
           <v-col cols="5" style="position: relative">
             <h2 class="text">票券清單</h2>
             <v-img src="../assets/other/ticket.png" />
-            <v-btn variant @click="showContent('tickets')">顯示更多</v-btn>
+            <v-btn variant="plain" @click="showContent('tickets')"
+              >顯示更多</v-btn
+            >
           </v-col>
           <v-col cols="5" style="position: relative">
             <h2>商品清單</h2>
             <v-img src="../assets/other/product.png" />
-            <v-btn variant @click="showContent('orders')">顯示更多</v-btn>
+            <v-btn variant="plain" @click="showContent('orders')"
+              >顯示更多</v-btn
+            >
           </v-col>
         </v-row>
       </v-container>
