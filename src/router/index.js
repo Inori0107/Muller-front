@@ -18,6 +18,11 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   extendRoutes: setupLayouts,
   routes,
+  scrollBehavior(to, from) {
+    if (to.path !== from.path) {
+      return { top: 0 };
+    }
+  },
 });
 
 router.beforeEach(async (to, from, next) => {
