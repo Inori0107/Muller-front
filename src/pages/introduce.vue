@@ -7,8 +7,12 @@
     </v-img>
     <v-row justify="center" class="content">
       <v-col md="6" class="text-center" v-if="!isMobile">
-        <h1 @click="scrollToNav(navs.history)">歷史...</h1>
-        <h1 @click="scrollToNav(navs.people)">人物...</h1>
+        <h1 @click="scrollToNav(navs.history)" style="cursor: pointer">
+          歷史...
+        </h1>
+        <h1 @click="scrollToNav(navs.people)" style="cursor: pointer">
+          人物...
+        </h1>
       </v-col>
       <v-col cols="5" md="6">
         <span>
@@ -385,6 +389,7 @@ const history_2020_2021 = [
   transform: skew(-20deg);
   border-right: 2px solid #b2b2b2;
   color: #b2b2b2;
+  cursor: pointer;
   @include md {
     font-size: 1.5rem;
     height: 75px;

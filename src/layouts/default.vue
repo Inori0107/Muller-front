@@ -4,6 +4,7 @@
     v-model="drawer"
     temporary
     location="right"
+    transition="fade-transition"
     width="2000"
     class="custom-drawer"
   >
@@ -298,7 +299,7 @@ watch(
   padding: 16px;
   font-size: 1.5rem;
   transition: 0.3s; /* 添加平滑過渡效果 */
-
+  z-index: 500 !important;
   &.app-bar-hidden {
     top: -100px !important; /* 隱藏 v-app-bar */
   }

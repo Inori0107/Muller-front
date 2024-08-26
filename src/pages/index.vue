@@ -1,11 +1,7 @@
 <template>
   <!-- heroPic -->
   <v-container fluid style="padding: 0">
-    <v-img
-      src="../assets/home/heroPic.png"
-      style="position: relative"
-      class="heroPic"
-    >
+    <v-img src="../assets/home/heroPic.png" style="position: relative">
       <div ref="textContainer" class="title">
         <span v-for="(char, index) in textArray" :key="index">
           {{ char }}
@@ -265,6 +261,9 @@ onMounted(() => {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* 光芒效果 */
   @include md {
     font-size: 3rem;
+  }
+  @include xl {
+    font-size: 4rem;
   }
 }
 
