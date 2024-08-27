@@ -19,7 +19,7 @@
   </v-container>
 
   <!-- About us -->
-  <v-container fluid style="padding: 0" class="animate-block">
+  <v-container fluid style="padding: 0">
     <v-row>
       <v-col cols="10">
         <v-img src="../assets/home/bg.jpg"></v-img>
@@ -43,7 +43,7 @@
   </v-container>
 
   <!-- Youtube -->
-  <v-container fluid id="bg_1" class="animate-block">
+  <v-container fluid id="bg_1">
     <CarouselYoutube />
     <h1>
       木樓合唱團YouTube頻道 歡迎訂閱
@@ -53,7 +53,7 @@
   </v-container>
 
   <!-- Performance -->
-  <v-container fluid class="animate-block">
+  <v-container fluid>
     <h1 class="text-center my-8">近期演出</h1>
     <v-container class="my-8">
       <v-row class="my-4" v-for="session in sessions" :key="session._id">
@@ -76,30 +76,15 @@
   <!-- review -->
   <h1 class="text-center">演出回顧</h1>
   <CarouselImage />
-  <div class="mt-5 pt-5">
-    <DialogComponent title="關於我們"></DialogComponent>
-  </div>
   <!-- publication -->
-  <v-container fluid class="publication">
-    <v-row justify="center" style="transform: translateY(-25%)">
+  <v-container fluid class="publication bg-black">
+    <h1 class="text-center my-8">出版品</h1>
+    <v-row justify="center">
       <v-col cols="5" md="4">
         <v-row>
-          <v-col cols="6">樂譜</v-col>
+          <v-col cols="6"><h2>專輯</h2></v-col>
           <v-col cols="6" class="text-end">
-            <v-btn variant="plain" color="black" to="/shop/product">
-              more
-            </v-btn>
-          </v-col>
-          <v-col cols="12">
-            <v-img src="../assets/home/sheet.webp"></v-img>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-col cols="5" md="4">
-        <v-row>
-          <v-col cols="6">專輯</v-col>
-          <v-col cols="6" class="text-end">
-            <v-btn variant="plain" color="black" to="/shop/product">
+            <v-btn variant="plain" color="white" to="/shop/product">
               more
             </v-btn>
           </v-col>
@@ -108,11 +93,24 @@
           </v-col>
         </v-row>
       </v-col>
+      <v-col cols="5" md="4">
+        <v-row>
+          <v-col cols="6"><h2>樂譜</h2></v-col>
+          <v-col cols="6" class="text-end">
+            <v-btn variant="plain" color="white" to="/shop/product">
+              more
+            </v-btn>
+          </v-col>
+          <v-col cols="12">
+            <v-img src="../assets/home/sheet.webp"></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
     </v-row>
   </v-container>
 
   <!-- Footer -->
-  <v-container fluid class="bg-black footer animate-block">
+  <v-container fluid class="bg-black footer">
     <v-row dense>
       <v-col cols="12">
         <h1>MÜLLER CHAMBER CHOIR</h1>
@@ -187,24 +185,6 @@ onMounted(() => {
       delay: 1.5, // 與圖片動畫對齊，圖片動畫結束後立即開始文字動畫
     }
   );
-  // 對所有主要區塊統一應用淡入和縮放的效果
-  gsap.utils.toArray(".animate-block").forEach((block) => {
-    gsap.fromTo(
-      block,
-      { opacity: 0, y: -100 }, // 向上浮動進入
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: block,
-          start: "top 60%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  });
 });
 
 // 使用 useApi composable 來進行 API 請求
@@ -311,10 +291,23 @@ onMounted(() => {
     }
   }
 }
-
 .publication {
-  padding-top: 128px;
-  background: linear-gradient(white 50%, black 100%);
+  padding: 6rem 0;
+  @include md {
+    padding: 12rem 0;
+  }
+  h1 {
+    font-size: 1.2rem;
+    @include md {
+      font-size: 2rem;
+    }
+  }
+  h2 {
+    font-size: 1rem;
+    @include md {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .footer {

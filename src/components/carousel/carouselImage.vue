@@ -21,8 +21,8 @@
       <v-img :src="item.image" class="carousel-image"></v-img>
     </SwiperSlide>
   </Swiper>
-  <v-container>
-    <v-card class="carousel-card">
+  <v-container fluid class="bg-black" style="padding: 0">
+    <v-card class="carousel-card bg-black" elevation="0">
       <v-card-title>{{ activeItem.title }}</v-card-title>
       <v-card-text
         class="text-start"
@@ -142,11 +142,10 @@ const updateActiveIndex = (swiper) => {
   transition: transform 0.3s ease-in-out;
 }
 .carousel-card {
-  background: linear-gradient(135deg, #875f593b 0%, #fff 50%, #875f593b 100%);
+  // background: linear-gradient(135deg, #875f593b 0%, #fff 50%, #875f593b 100%);
+  text-align: center;
   margin: auto;
   max-width: 800px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
   transition: 0.3s ease-in-out;
   padding: 16px;
 }
@@ -154,14 +153,13 @@ const updateActiveIndex = (swiper) => {
 .carousel-card .v-card-title {
   font-weight: bold;
   font-size: 1.2em;
-  color: #333; /* 深灰色文字 */
   @include md {
     font-size: 1.5rem;
   }
 }
 
 .carousel-card .v-card-text {
-  color: #666; /* 淺灰色文字 */
+  color: #999; /* 淺灰色文字 */
   font-weight: 600;
   padding: 8px;
   font-size: 0.6rem;

@@ -4,7 +4,6 @@
     v-model="drawer"
     temporary
     location="right"
-    transition="fade-transition"
     width="2000"
     class="custom-drawer"
   >
@@ -149,11 +148,11 @@
   </v-main>
 
   <!-- footer -->
-  <v-footer>
+  <!-- <v-footer>
     <v-icon>mdi-copyright</v-icon>
     <a href="https://www.muller.org.tw/about">木樓合唱團</a>
     <p>Müller Chamber Choir</p>
-  </v-footer>
+  </v-footer> -->
 </template>
 
 <script setup>
