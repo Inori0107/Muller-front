@@ -54,14 +54,6 @@ export default defineConfig({
 		extensions: [".js", ".json", ".jsx", ".mjs", ".ts", ".tsx", ".vue"]
 	},
 	server: {
-		port: 3000,
-		proxy: {
-			// 代理 API 請求
-			"/api": {
-				target: "https://muller-back.fly.dev", // 你的後端 API 網址
-				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, "") // 重寫 URL 路徑
-			}
-		}
+		port: 3000
 	}
 });
